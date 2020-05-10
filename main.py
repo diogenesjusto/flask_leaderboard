@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import os
 import datetime as dt
-import time
 
 from flask import Flask,render_template,url_for,request,g, flash, redirect
 from werkzeug.utils import secure_filename
@@ -226,9 +225,7 @@ def home_page():
             if submission_file and allowed_file(submission_file.filename):
 
                 filename = secure_filename(submission_file.filename)
-                timestr = time.strftime("%Y%m%d-%H%M%S")
-                filename = timestr + filename
-
+                
                 target_dir = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id))
                 if not os.path.exists(target_dir):
                     os.makedirs(target_dir)
