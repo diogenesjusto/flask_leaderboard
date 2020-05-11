@@ -128,7 +128,7 @@ def get_maxtentativas(user):
             """
     df = pd.read_sql(query, 
                     db.session.bind)
-    return df[1,1]
+    return df.iloc[0,0]
   
 # Leader Board
 def get_leaderboard(greater_better, limit, submission_type = 'public'):
