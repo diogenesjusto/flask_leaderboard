@@ -232,6 +232,7 @@ def home_page():
         ### UPLOAD FILE
         if 'uploadfile' in request.files.keys() and current_user.is_authenticated:
             user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+            print(user_id)
             if get_maxtentativas(user_id)<10:
               submission_file = request.files['uploadfile']
               #throw error if extension is not allowed
