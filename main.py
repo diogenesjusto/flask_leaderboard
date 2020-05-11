@@ -121,8 +121,8 @@ def get_maxtentativas(user):
     query = f"""
             select count(*) as tent_12h 
             from submission s
-            on user u
-            inner join s.user_id = u.id
+            inner join user u
+            on s.user_id = u.id
             where u.username='{user}'
               and timestamp>DATE('now', '-12 hour')
             """
