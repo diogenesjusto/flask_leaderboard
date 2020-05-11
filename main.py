@@ -261,5 +261,5 @@ def home_page():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host = '0.0.0.0',port=5005)
     app.run(ssl_context=('cert.pem', 'key.pem'))
+    app.run(host = '0.0.0.0',port=443)
