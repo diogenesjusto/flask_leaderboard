@@ -116,12 +116,14 @@ admin.add_view(UserView(User, db.session))
 admin.add_view(SubmissionView(Submission, db.session))
 
 # Max tentativas
-def get_maxtentativas(user_id):
+def get_maxtentativas(user):
 
     query = f"""
             select count(*) as tent_12h 
-            from submission 
-            where user_id={user_id}
+            from submission s
+            on user u
+            on s.user_id = u.id
+            where u.username='{user}'
               and timestamp>DATE('now', '-12 hour')
             """
     df = pd.read_sql(query, 
@@ -231,10 +233,9 @@ def home_page():
 
         ### UPLOAD FILE
         if 'uploadfile' in request.files.keys() and current_user.is_authenticated:
-            user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-            print(user_id)
-            #if get_maxtentativas(user_id)<10:
-            #  submission_file = request.files['uploadfile']
+            user = = User.query.filter_by(username=login_form.username.data).first()
+            if get_maxtentativas(user)<10:
+              submission_file = request.files['uploadfile']
               #throw error if extension is not allowed
               if not allowed_file(submission_file.filename):
                   raise Exception('Invalid file extension')
@@ -268,8 +269,8 @@ def home_page():
                       print(f"Hoube um problema na submissão. Tente novamente ou entre em contato pelo email hackaton@dotz.com")
 
                   return redirect(url_for('home_page', submission_status = submission_status))
-            #else:
-            #  print('Você excedeu o número máximo de tentativas nas últimas 12h (10 tentativas)')
+            else:
+              print('Você excedeu o número máximo de tentativas nas últimas 12h (10 tentativas)')
               
     return render_template('index.html', 
                         leaderboard = leaderboard,
