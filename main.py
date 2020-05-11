@@ -228,7 +228,7 @@ def home_page():
                 filename = secure_filename(submission_file.filename)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                 user = db.relationship('User')
-                filename = user + "_" + timestr + "_"+ filename
+                filename = user + timestr + filename
                 
                 target_dir = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id))
                 if not os.path.exists(target_dir):
