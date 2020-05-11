@@ -4,7 +4,7 @@ import os
 import datetime as dt
 import time
 
-from flask import Flask,render_template,url_for,request,g, flash, redirect
+from flask import Flask,render_template,url_for,request,g, flash, redirect,jsonify
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -262,3 +262,4 @@ def home_page():
 if __name__ == '__main__':
     app.debug = True
     app.run(host = '0.0.0.0',port=5005)
+    app.run(ssl_context=('cert.pem', 'key.pem'))
