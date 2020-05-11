@@ -231,41 +231,45 @@ def home_page():
 
         ### UPLOAD FILE
         if 'uploadfile' in request.files.keys() and current_user.is_authenticated:
-            submission_file = request.files['uploadfile']
-            #throw error if extension is not allowed
-            if not allowed_file(submission_file.filename):
-                raise Exception('Invalid file extension')
-            
-            if submission_file and allowed_file(submission_file.filename):
 
-                filename = secure_filename(submission_file.filename)
-                timestr = time.strftime("%Y%m%d-%H%M%S")
-                filename = timestr + '_' + filename
-                
-                target_dir = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id))
-                if not os.path.exists(target_dir):
-                    os.makedirs(target_dir)
-                
-                fullPath = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id) , filename)
-                submission_file.save(fullPath)
+            if get_maxtentativas(user_id)<10:
+              submission_file = request.files['uploadfile']
+              #throw error if extension is not allowed
+              if not allowed_file(submission_file.filename):
+                  raise Exception('Invalid file extension')
 
-                submission_type = request.form.get('submission_type', "public")
-                result = scorer.calculate_score(submission_path = fullPath, submission_type = submission_type)
-                submission_status = result[0]
-                if submission_status == "SUBMISSION SUCCESS":
-                    score = result[1]
-                    score = round(score, 3)
-                    s = Submission(user_id=current_user.id , score=score, submission_type = submission_type)
-                    db.session.add(s)
-                    db.session.commit()
-                    print(f"submitted {score}")
+              if submission_file and allowed_file(submission_file.filename):
 
-                    submission_status =  f"SUBMISSION SUCCESS | Score: {round(score,3)}" 
-                else:
-                    print(f"Hoube um problema na submissão. Tente novamente ou entre em contato pelo email hackaton@dotz.com")
-                    
-                return redirect(url_for('home_page', submission_status = submission_status))
-            
+                  filename = secure_filename(submission_file.filename)
+                  timestr = time.strftime("%Y%m%d-%H%M%S")
+                  filename = timestr + '_' + filename
+
+                  target_dir = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id))
+                  if not os.path.exists(target_dir):
+                      os.makedirs(target_dir)
+
+                  fullPath = os.path.join(app.config['UPLOAD_FOLDER'], str(current_user.id) , filename)
+                  submission_file.save(fullPath)
+
+                  submission_type = request.form.get('submission_type', "public")
+                  result = scorer.calculate_score(submission_path = fullPath, submission_type = submission_type)
+                  submission_status = result[0]
+                  if submission_status == "SUBMISSION SUCCESS":
+                      score = result[1]
+                      score = round(score, 3)
+                      s = Submission(user_id=current_user.id , score=score, submission_type = submission_type)
+                      db.session.add(s)
+                      db.session.commit()
+                      print(f"submitted {score}")
+
+                      submission_status =  f"SUBMISSION SUCCESS | Score: {round(score,3)}" 
+                  else:
+                      print(f"Hoube um problema na submissão. Tente novamente ou entre em contato pelo email hackaton@dotz.com")
+
+                  return redirect(url_for('home_page', submission_status = submission_status))
+            else:
+              print('Você excedeu o número máximo de tentativas nas últimas 12h (10 tentativas)')
+              
     return render_template('index.html', 
                         leaderboard = leaderboard,
                         leaderboard_private = leaderboard_private,
