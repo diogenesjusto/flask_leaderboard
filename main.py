@@ -248,6 +248,8 @@ def home_page():
                     print(f"submitted {score}")
 
                     submission_status =  f"SUBMISSION SUCCESS | Score: {round(score,3)}" 
+                else:
+                    print(f"Hoube um problema na submissão. Tente novamente ou entre em contato pelo email hackaton@dotz.com")
                     
                 return redirect(url_for('home_page', submission_status = submission_status))
             
