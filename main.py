@@ -233,7 +233,7 @@ def home_page():
 
         ### UPLOAD FILE
         if 'uploadfile' in request.files.keys() and current_user.is_authenticated:
-            user = = User.query.filter_by(username=login_form.username.data).first()
+            user = User.query.filter_by(username=login_form.username.data).first()
             if get_maxtentativas(user)<10:
               submission_file = request.files['uploadfile']
               #throw error if extension is not allowed
