@@ -115,6 +115,19 @@ admin = Admin(app, index_view=MyAdminIndexView())
 admin.add_view(UserView(User, db.session))
 admin.add_view(SubmissionView(Submission, db.session))
 
+# Max tentativas
+def get_maxtentativas(user_id):
+
+    query = f"""
+            select count(*) as tent_12h 
+            from submission 
+            where user_id={user_id}
+              and timestamp>DATE('now', '-12 hour')
+            """
+    df = pd.read_sql(query, 
+                    db.session.bind)
+    return df[1,1]
+  
 # Leader Board
 def get_leaderboard(greater_better, limit, submission_type = 'public'):
 
