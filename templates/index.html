@@ -92,7 +92,7 @@
                 <h2>welcome back {{ current_user.username }}! </h2>
                 <h3>Upload</h3>
                 <form action="" method=post enctype=multipart/form-data> <select name=submission_type>
-                    <option value="public">public</option>
+                    <option hidden value="public">public</option>
                     </select>
                     <input type=file name=uploadfile>
                     <input type=submit value=Upload>
