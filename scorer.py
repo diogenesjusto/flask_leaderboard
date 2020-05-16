@@ -43,8 +43,8 @@ class Scorer():
         cat_key = df_merged['CATEGORIA_key']
         cat_submission = df_merged['CATEGORIA_submission']
 
-        if sub_submission.isna().sum() > 0 or cat_submission.isna().sum() > 0:
-            return ("SUBMISSION HAS NULL VALUE", None)
+        #if sub_submission.isna().sum() > 0 or cat_submission.isna().sum() > 0:
+        #    return ("SUBMISSION HAS NULL VALUE", None)
 
         encoder = preprocessing.LabelEncoder()
         
