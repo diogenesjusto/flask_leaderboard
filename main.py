@@ -17,7 +17,7 @@ from sklearn.metrics import mean_absolute_error
 
 from forms import LoginForm, RegisterForm
 from config import Config
-from scorer import Scorer
+from scorer2 import Scorer2
 
 # PARAMETER
 
