@@ -48,6 +48,7 @@ class Scorer():
 
         encoder = preprocessing.LabelEncoder()
         
+        print(sub_key)
         sub_key = encoder.fit_transform(sub_key)
         cat_key = encoder.fit_transform(cat_key)
         sub_submission = encoder.fit_transform(sub_submission)
