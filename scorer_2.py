@@ -4,9 +4,9 @@ from sklearn.metrics import f1_score
 from sklearn import preprocessing
 from sklearn.metrics import mean_squared_error
 
-class Scorer():
+class Scorer2():
     def __init__(self, public_path = './master_key/public_key.csv', 
-                private_path = './master_key/private_key.csv', metric = mean_squared_error):
+                private_path = './master_key/private_key2.csv', metric = mean_squared_error):
         self.public_path = public_path
         self.private_path = private_path
         self.metric = metric
