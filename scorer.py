@@ -55,7 +55,7 @@ class Scorer():
         
         sub_key = encoder.fit_transform(sub_key.astype(str))
         cat_key = encoder.fit_transform(cat_key)
-        sub_submission = encoder.fit_transform(sub_submission)
+        sub_submission = encoder.fit_transform(sub_submission.astype(str))
         cat_submission = encoder.fit_transform(cat_submission)
         
         f1_cat = f1_score(cat_key, cat_submission, average='micro')
