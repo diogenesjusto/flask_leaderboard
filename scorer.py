@@ -11,8 +11,8 @@ class Scorer():
         self.private_path = private_path
         self.metric = metric
 
-        self.df_public_key = pd.read_csv(self.public_path,encoding='utf8', engine='python')
-        self.df_private_key = pd.read_csv(self.private_path, encoding='utf8', engine='python')
+        self.df_public_key = pd.read_csv(self.public_path)
+        self.df_private_key = pd.read_csv(self.private_path)
         
     def calculate_score(self, submission_path, submission_type = 'public'):
         df_submission = pd.read_csv(submission_path)
