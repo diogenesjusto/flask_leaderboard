@@ -60,7 +60,7 @@ class Scorer():
         
         f1_cat = f1_score(cat_key, cat_submission, average='micro')
         f1_sub = f1_score(sub_key, sub_submission, average='micro')
-        final_score = (f1_score(cat_true, cat_pred, average='micro')+f1_score(sub_true, sub_pred, average='micro'))/2
+        final_score = (f1_score(cat_key, cat_submission, average='micro')+f1_score(sub_key, sub_submission, average='micro'))/2
         
         score = final_score
         return ("SUBMISSION SUCCESS", score)
