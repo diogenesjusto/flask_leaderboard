@@ -35,10 +35,7 @@ class Scorer():
         # When submission and key have different index value
         if len(df_key) != len(df_merged):
             return ("NOT SAME INDEX", None)
-
-        sub_true = df_merged['SUB-CATEGORIA']
-        cat_true = df_merged['CATEGORIA']
-        
+  
         # data size is same, time to get score
         sub_key = df_merged['SUB-CATEGORIA_key']
         sub_submission = df_merged['SUB-CATEGORIA_submission']
