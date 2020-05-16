@@ -17,7 +17,7 @@ from sklearn.metrics import mean_absolute_error
 
 from forms import LoginForm, RegisterForm
 from config import Config
-from scorer2 import Scorer2
+from scorer import Scorer
 
 # PARAMETER
 
@@ -25,7 +25,7 @@ from scorer2 import Scorer2
 limit_lb = 100 # Number of user showed at leaderboard table
 greater_better = False # True if lowest score is the best; False if greatest score is the best
 metric = mean_absolute_error #change the metric using sklearn function
-scorer = Scorer2(public_path = './master_key/public_key.csv', 
+scorer = Scorer(public_path = './master_key/public_key.csv', 
                 private_path = './master_key/private_key2.csv', 
                 metric = metric) #change the metric using sklearn function
 
