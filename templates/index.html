@@ -89,7 +89,7 @@
             {% elif current_user.is_authenticated %}
 
             <div class="col uploadform">
-                <h2>welcome back {{ current_user.username }}! </h2>
+                <h2>welcome back {{ current_user.username }} maxattempt {{maxattempt}}! </h2>
                 <h3>Upload</h3>
                 <form action="" method=post enctype=multipart/form-data> <select name=submission_type>
                     <option value="public">public</option>
