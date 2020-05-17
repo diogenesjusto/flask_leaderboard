@@ -211,7 +211,7 @@ def home_page():
     leaderboard = get_leaderboard(greater_better = greater_better, limit = limit_lb, submission_type='public')
     leaderboard_private = get_leaderboard(greater_better = greater_better, limit = limit_lb, submission_type='private')
 
-    maxattempt = get_maxtentativas(login_form.username.data)
+    maxattempt = get_maxtentativas(User.query.filter_by(username=login_form.username.data).first())
     
     if request.method == 'POST': # If upload file / Login
         ### LOGIN 
@@ -236,7 +236,7 @@ def home_page():
 
         ### UPLOAD FILE
         if 'uploadfile' in request.files.keys() and current_user.is_authenticated:
-            user = login_form.username.data
+            user = User.query.filter_by(username=login_form.username.data).first()
             if get_maxtentativas(user)<2:
               submission_file = request.files['uploadfile']
               #throw error if extension is not allowed
