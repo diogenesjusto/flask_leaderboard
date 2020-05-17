@@ -211,9 +211,11 @@ def home_page():
     leaderboard = get_leaderboard(greater_better = greater_better, limit = limit_lb, submission_type='public')
     leaderboard_private = get_leaderboard(greater_better = greater_better, limit = limit_lb, submission_type='private')
 
-    maxattempt = get_maxtentativas(User.query.filter_by(username=login_form.username.data).first())
+    maxattempt ='fora if'
     
     if request.method == 'POST': # If upload file / Login
+        maxattempt = get_maxtentativas(User.query.filter_by(username=login_form.username.data).first())
+
         ### LOGIN 
         if login_form.validate_on_submit():
             print(f'Login requested for user {login_form.username.data}, remember_me={login_form.remember_me.data}')
