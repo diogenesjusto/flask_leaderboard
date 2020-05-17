@@ -5,7 +5,7 @@ from sklearn import preprocessing
 from sklearn.metrics import mean_squared_error
 
 class Scorer():
-    def __init__(self, public_path = './master_key/public_key.csv', 
+    def __init__(self, public_path = './s3/master_key/public_key.csv', 
                 private_path = './master_key/private_key.csv', metric = mean_squared_error):
         self.public_path = public_path
         self.private_path = private_path
