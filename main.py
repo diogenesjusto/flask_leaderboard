@@ -281,7 +281,7 @@ def home_page():
                         login_form=login_form, 
                         login_status=login_status,
                         submission_status=submission_status,
-                        maxattempt=1
+                        maxattempt=maxattempt
     )
 
 if __name__ == '__main__':
