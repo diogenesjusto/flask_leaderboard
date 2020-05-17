@@ -211,6 +211,8 @@ def home_page():
     leaderboard = get_leaderboard(greater_better = greater_better, limit = limit_lb, submission_type='public')
     leaderboard_private = get_leaderboard(greater_better = greater_better, limit = limit_lb, submission_type='private')
 
+    maxattempt = get_maxtentativas(login_form.username.data)
+    
     if request.method == 'POST': # If upload file / Login
         ### LOGIN 
         if login_form.validate_on_submit():
@@ -278,7 +280,8 @@ def home_page():
                         leaderboard_private = leaderboard_private,
                         login_form=login_form, 
                         login_status=login_status,
-                        submission_status=submission_status
+                        submission_status=submission_status,
+                        maxattempt=maxattempt
     )
 
 if __name__ == '__main__':
