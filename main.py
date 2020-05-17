@@ -173,7 +173,7 @@ def register_page():
             print(user)
             if user is None: # only when user is not registered then proceed
                 print("HALOOO")
-                u = User(username=reg_form.username.data, password = reg_form.password.data)
+                u = User(username=reg_form.username.data, password = reg_form.password.data, email = reg_form.email.data)
                 db.session.add(u)
                 db.session.commit()
                 # flash('Congratulations, you are now a registered user!')
