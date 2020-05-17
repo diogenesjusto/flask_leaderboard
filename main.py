@@ -30,7 +30,7 @@ scorer = Scorer(public_path = './s3/master_key/public_key.csv',
                 metric = metric) #change the metric using sklearn function
 
 ## Upload parameter
-UPLOAD_FOLDER = 'submissions'
+UPLOAD_FOLDER = 's3/submissions'
 ALLOWED_EXTENSIONS = {'csv'} # only accept csv files
 
 ## FLASK configuration
