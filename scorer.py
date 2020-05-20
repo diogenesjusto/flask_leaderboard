@@ -29,23 +29,23 @@ class Scorer():
             print(len(df_key), len(df_submission))
             return ("NOT SAME LENGTH", None)
         
-        df_merged = df_key.merge(df_submission, how ='inner', 
-                                left_on='data_id', right_on='data_id', # adjust `on` columns as params
-                                suffixes=('_key', '_submission')) 
+        #df_merged = df_key.merge(df_submission, how ='inner', 
+        #                        left_on='data_id', right_on='data_id', # adjust `on` columns as params
+        #                        suffixes=('_key', '_submission')) 
         # When submission and key have different index value
-        if len(df_key) != len(df_merged):
-            return ("NOT SAME INDEX", None)
+        #if len(df_key) != len(df_merged):
+        #    return ("NOT SAME INDEX", None)
   
         # data size is same, time to get score
-        sub_key = df_merged['SUB-CATEGORIA_key']
-        sub_submission = df_merged['SUB-CATEGORIA_submission']
-        cat_key = df_merged['CATEGORIA_key']
-        cat_submission = df_merged['CATEGORIA_submission']
+        #sub_key = df_merged['SUB-CATEGORIA_key']
+        #sub_submission = df_merged['SUB-CATEGORIA_submission']
+        #cat_key = df_merged['CATEGORIA_key']
+        #cat_submission = df_merged['CATEGORIA_submission']
 
-        #sub_key = df_key['SUB-CATEGORIA'].str.lower()
-        #sub_submission = df_submission['SUB-CATEGORIA'].str.lower()
-        #cat_key = df_key['CATEGORIA'].str.lower()
-        #cat_submission = df_submission['CATEGORIA'].str.lower()
+        sub_key = df_key['SUB-CATEGORIA'].str.lower()
+        sub_submission = df_submission['SUB-CATEGORIA'].str.lower()
+        cat_key = df_key['CATEGORIA'].str.lower()
+        cat_submission = df_submission['CATEGORIA'].str.lower()
 
         #if sub_submission.isna().sum() > 0 or cat_submission.isna().sum() > 0:
         #    return ("SUBMISSION HAS NULL VALUE", None)
