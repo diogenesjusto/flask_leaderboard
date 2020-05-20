@@ -42,10 +42,10 @@ class Scorer():
         #cat_key = df_merged['CATEGORIA_key']
         #cat_submission = df_merged['CATEGORIA_submission']
 
-        sub_key = df_key['SUB-CATEGORIA'].str.lower()
-        sub_submission = df_submission['SUB-CATEGORIA'].str.lower()
-        cat_key = df_key['CATEGORIA'].str.lower()
-        cat_submission = df_submission['CATEGORIA'].str.lower()
+        sub_key = df_key['SUB-CATEGORIA']
+        sub_submission = df_submission['SUB-CATEGORIA']
+        cat_key = df_key['CATEGORIA']
+        cat_submission = df_submission['CATEGORIA']
 
         #if sub_submission.isna().sum() > 0 or cat_submission.isna().sum() > 0:
         #    return ("SUBMISSION HAS NULL VALUE", None)
