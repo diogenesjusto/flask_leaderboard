@@ -1,6 +1,7 @@
 import pandas as pd 
 
 from sklearn.metrics import f1_score
+from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 from sklearn.metrics import mean_squared_error
 
@@ -57,8 +58,10 @@ class Scorer():
         sub_submission = encoder.fit_transform(sub_submission.astype(str))
         cat_submission = encoder.fit_transform(cat_submission.astype(str))
         
-        f1_cat = f1_score(cat_key, cat_submission, average='micro')
-        f1_sub = f1_score(sub_key, sub_submission, average='micro')
+        #f1_cat = accuracy_score(cat_key, cat_submission, average='micro')
+        #f1_sub = accuracy_score(sub_key, sub_submission, average='micro')
+        f1_cat = accuracy_score(cat_key, cat_submission)
+        f1_sub = accuracy_score(sub_key, sub_submission)                      
         #final_score = ((f1_cat*0.5)+(f1_sub*0.5))/(f1_cat+f1_sub)
         final_score = f1_cat
         
