@@ -11,7 +11,7 @@ class Scorer():
         self.private_path = private_path
         self.metric = metric
 
-        col_names = ["data_id","DESCRIÇÃO-PARCEIRO","SUB-CATEGORIA","CATEGORIA"]
+        col_names = ["DESCRIÇÃO-PARCEIRO","SUB-CATEGORIA","CATEGORIA"]
         self.df_public_key = pd.read_csv(self.public_path, names=col_names)
         self.df_private_key = pd.read_csv(self.private_path)
         
