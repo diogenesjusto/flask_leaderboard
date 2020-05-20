@@ -16,7 +16,7 @@ class Scorer():
         self.df_private_key = pd.read_csv(self.private_path)
         
     def calculate_score(self, submission_path, submission_type = 'public'):
-        col_names = ["0","DESCRIÇÃO-PARCEIRO","SUB-CATEGORIA","CATEGORIA"]
+        col_names = ["data_id","DESCRIÇÃO-PARCEIRO","SUB-CATEGORIA","CATEGORIA"]
         df_submission = pd.read_csv(submission_path, names=col_names)
 
         if submission_type == 'private':
