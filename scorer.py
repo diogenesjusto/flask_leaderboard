@@ -63,7 +63,7 @@ class Scorer():
         #f1_cat = round(accuracy_score(cat_key, cat_submission),5)
         #f1_sub = round(accuracy_score(sub_key, sub_submission),5)                  
         final_score = ((f1_cat*0.5)+(f1_sub*0.5))
-        final_score = f1_cat
+        final_score = f1_sub
         
         score = final_score
         return ("SUBMISSION SUCCESS", score)
