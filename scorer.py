@@ -54,14 +54,18 @@ class Scorer():
 
         encoder = preprocessing.LabelEncoder()
         
-        sub_key = encoder.fit_transform(sub_key.astype(str))
-        cat_key = encoder.fit_transform(cat_key.astype(str))
-        sub_submission = encoder.fit_transform(sub_submission.astype(str))
-        cat_submission = encoder.fit_transform(cat_submission.astype(str))
+        #sub_key = encoder.fit_transform(sub_key.astype(str))
+        #cat_key = encoder.fit_transform(cat_key.astype(str))
+        #sub_submission = encoder.fit_transform(sub_submission.astype(str))
+        #cat_submission = encoder.fit_transform(cat_submission.astype(str))
+        sub_key = (sub_key.astype(str))
+        cat_key = (cat_key.astype(str))
+        sub_submission = (sub_submission.astype(str))
+        cat_submission = (cat_submission.astype(str))
         
         #f1_cat = f1_score(cat_key, cat_submission, average='micro')
         f1_sub = f1_score(sub_key, sub_submission, average='micro')
-        f1_cat = accuracy_score(cat_key, cat_submission)
+        f1_cat = accuracy_score(cat_key, cat_key)
         #f1_sub = round(accuracy_score(sub_key, sub_submission),5)                  
         
         #final_score = ((f1_cat*0.5)+(f1_sub*0.5))
