@@ -68,5 +68,5 @@ class Scorer():
         final_score = ((f1_cat)+(f1_sub))
         final_score = final_score
         
-        score = round( sum(np.where(cat_key == cat_submission, 1, 0)) ,5)
+        score = '%.5f' % ( sum(np.where(cat_key == cat_submission, 1, 0)) )
         return ("SUBMISSION SUCCESS", score)
