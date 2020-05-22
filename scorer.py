@@ -72,5 +72,5 @@ class Scorer():
         #final_score = ((f1_cat)+(f1_sub))
         final_score = final_score
         
-        score = ( f1_cat )
+        score = ( final_score )
         return ("SUBMISSION SUCCESS", score)
