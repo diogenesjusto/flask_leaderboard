@@ -67,5 +67,5 @@ class Scorer():
         final_score = ((f1_cat)+(f1_sub))
         final_score = final_score
         
-        score = final_score
+        score = len(df_submission)
         return ("SUBMISSION SUCCESS", score)
