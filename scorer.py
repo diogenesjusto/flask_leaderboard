@@ -65,7 +65,7 @@ class Scorer():
         
         #f1_cat = f1_score(cat_key, cat_submission, average='micro')
         f1_sub = f1_score(sub_key, sub_submission, average='micro')
-        f1_cat = accuracy_score(cat_key, cat_key)
+        f1_cat = accuracy_score(cat_key, cat_submission)
         #f1_sub = round(accuracy_score(sub_key, sub_submission),5)                  
         
         #final_score = ((f1_cat*0.5)+(f1_sub*0.5))
