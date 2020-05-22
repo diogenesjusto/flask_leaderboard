@@ -1,4 +1,5 @@
 import pandas as pd 
+import numpy as np
 
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
@@ -67,5 +68,5 @@ class Scorer():
         final_score = ((f1_cat)+(f1_sub))
         final_score = final_score
         
-        score = len(df_submission)
+        score = sum(np.where(sub_key == sub_submission, 1, 0))
         return ("SUBMISSION SUCCESS", score)
