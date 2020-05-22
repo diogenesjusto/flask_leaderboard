@@ -263,13 +263,12 @@ def home_page():
                   submission_status = result[0]
                   if submission_status == "SUBMISSION SUCCESS":
                       score = result[1]
-                      score = round(score, 3)
                       s = Submission(user_id=current_user.id , score=score, submission_type = submission_type)
                       db.session.add(s)
                       db.session.commit()
                       print(f"submitted {score}")
 
-                      submission_status =  f"SUBMISSION SUCCESS | Score: {round(score,3)}" 
+                      submission_status =  f"SUBMISSION SUCCESS | Score: {'%.5f' % score}" 
                   else:
                       print(f"Hoube um problema na submissão. Tente novamente ou entre em contato pelo email hackaton@dotz.com")
 
