@@ -59,14 +59,14 @@ class Scorer():
         sub_submission = encoder.fit_transform(sub_submission.astype(str))
         cat_submission = encoder.fit_transform(cat_submission.astype(str))
         
-        f1_cat = round(f1_score(cat_key, cat_submission, average='micro'),5)
-        f1_sub = round(f1_score(sub_key, sub_submission, average='micro'),5)
-        #f1_cat = round(accuracy_score(cat_key, cat_submission),5)
+        #f1_cat = f1_score(cat_key, cat_submission, average='micro')
+        f1_sub = f1_score(sub_key, sub_submission, average='micro')
+        f1_cat = accuracy_score(cat_key, cat_submission)
         #f1_sub = round(accuracy_score(sub_key, sub_submission),5)                  
         
         #final_score = ((f1_cat*0.5)+(f1_sub*0.5))
         final_score = ((f1_cat)+(f1_sub))
         final_score = final_score
         
-        score = ( sum(np.where(cat_key == cat_submission, 1, 0)) )
+        score = ( f1_cat )
         return ("SUBMISSION SUCCESS", score)
